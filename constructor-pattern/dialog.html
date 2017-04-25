@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="./dialog.css">
+	<title>构造模式</title>
+</head>
+<body>
+	<button id="demo">测试</button>
+	<script type="text/javascript" src="./Constructor-dialog.js"></script>
+	<script type="text/javascript">
+		var dialog = new Dialog({
+				title: "测试弹窗",
+				content: "这是测试内容，这是测试内容，这是测试内容。",
+				buttons: {
+					okBtn: '确定',
+					canelBtn: "取消"
+				},
+				okFn: function() {
+					alert("你点击了确定按钮！");
+				},
+				cancelFn: function() {
+					alert("你点击了取消按钮！");
+				}
+			});
+		document.getElementById('demo').addEventListener('click', function() {
+			dialog.render();
+		}, false);
+	</script>
+</body>
+</html>
