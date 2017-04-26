@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>模块模式</title>
+</head>
+<body>
+	<button id="demo">测试</button>
+	<script type="text/javascript" src="event.js"></script>
+	<script type="text/javascript">
+		var elem = document.getElementById("demo"),
+			fn = function() {
+				console.log("click thing happend");
+			};
+		Event.once(elem, "click", fn);
+	</script>
+</body>
+</html>
