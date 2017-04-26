@@ -107,3 +107,33 @@ Javascript中有一个名为prototype的属性。调用Javascript构造器创建
 	var civic = new Car("Honda Civic", 2009, 20000);
 	console.log(civic.toString());
 ```
+
+## 模块模式(Module)
+
+Javscript是一种弱类型、动态语言，没有静态语言那么严格的语法规则。静态语言对变量的类型是非常严格的，在编译期间就要进行严格的变量类型检测。而Javascript是在运行期间对变量类型进行动态赋值的。并且Javascript也不支持静态语言的那些面向对象、多态及封装。但是在Javascript里面可以通过作用域及原型prototype来实现静态语言的特性。
+
+模块模式其实就是一种封装。在模块模式中，我们希望对一些数据进行保护或者说对外不可见，但提供方法来对我们封装的私有数据进行一些操作，这就是模块模式。一般，我们通过闭包来实现。比如： 
+
+```javascript
+	
+	var someModule = (function() {
+			var _count = 0;  // 代表私有
+			var _privateMethod = function() { //私有方法
+					_count ++;
+					console.log(_count);
+				};
+
+			return {
+				publicMethod: function() {
+					console.log("调用方法");
+					_privateMethod();
+				}
+			};	 
+
+		})();
+
+	// 使用
+	someModule.publicMethod(); // 1
+	someModule._count;  // undefined
+
+```
